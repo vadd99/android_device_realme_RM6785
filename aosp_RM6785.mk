@@ -29,7 +29,7 @@ $(call inherit-product, vendor/gapps2/gapps.mk)
 WITH_GMS := true
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := proton_RM6785
+PRODUCT_NAME := aosp_RM6785
 PRODUCT_DEVICE := RM6785
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := RM6785
