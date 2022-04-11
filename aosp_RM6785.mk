@@ -21,12 +21,48 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device makefile
 $(call inherit-product, device/realme/RM6785/device.mk)
 
-# Inherit some common ProtonAOSP stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
-$(call inherit-product, vendor/gapps2/gapps.mk)
 
-# GMS
-WITH_GMS := true
+# first, inherit Project Arcana common.mk
+$(call inherit-product, vendor/aosp/common.mk)
+
+# do aosp bringup and use these flags to adapt
+
+# maintainer flag
+ARCANA_MAINTAINER := vadd
+
+# pixel build flag, if not define build type is vanilla
+WITH_GAPPS := true
+
+# disable/enable blur support, default is false
+TARGET_SUPPORTS_BLUR := true
+
+# prebuilt graphene camera flag, default is false
+TARGET_BUILD_GRAPHENEOS_CAMERA := true
+
+# whether to copy apns-conf.xml to system
+# (for devices having issues with TelephonyProvider: FileNotFoundException)
+# default is false (product)
+COPY_APN_SYSTEM := true
+
+# Misc flags to enable certain features
+
+# UDFPS ICONS/ANIMATIONS
+EXTRA_UDFPS_ANIMATIONS := true
+
+# Quick tap feature
+TARGET_SUPPORTS_QUICK_TAP := true
+
+# Face Unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
+# Bloom and Living Universe Pixel Wallpapers
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
+
+# Pixel Now playing feature
+TARGET_SUPPORTS_NOW_PLAYING := true
+
+# Pixel charger animation
+USE_PIXEL_CHARGER_IMAGES := true
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := aosp_RM6785
